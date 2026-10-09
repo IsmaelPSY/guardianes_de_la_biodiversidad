@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f0b94b">
+  <meta name="description" content="Guardianes de la Biodiversidad de Madre de Dios: una iniciativa juvenil por la vida de nuestros ecosistemas terrestres.">
+  <title>Guardianes de la Biodiversidad | Madre de Dios</title>
+  <style>
+    :root { --ink:#173b31; --green:#285941; --lime:#d8ed8e; --gold:#efbd4e; --cream:#fff9e9; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .announcement { min-height:31px; display:flex; align-items:center; justify-content:center; gap:9px; padding:6px 16px; background:#183b30; color:#f6f1d8; font-size:11px; letter-spacing:.07em; text-align:center; }
+    .announcement b { color:#d9ef8b; font-weight:700; }
+    header { position:absolute; z-index:2; top:31px; left:0; width:100%; }
+    nav { width:min(1200px, calc(100% - 64px)); height:82px; margin:auto; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #fff7d880; color:#fffdf3; }
+    .brand { display:flex; align-items:center; gap:11px; font-family:Georgia,serif; font-weight:700; font-size:19px; line-height:1.05; letter-spacing:-.04em; }
+    .brand-mark { display:grid; place-items:center; width:40px; height:40px; border:1px solid #ffffff9c; border-radius:50%; font-size:20px; }
+    .brand small { display:block; margin-top:4px; font:600 9px/1.2 ui-sans-serif,system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    .links { display:flex; align-items:center; gap:clamp(10px,1.5vw,20px); font-size:12px; font-weight:550; }
+    .links a { transition:opacity .2s; }.links a:hover { opacity:.72; }
+    .nav-cta { padding:12px 17px; border:1px solid #ffffffb0; border-radius:999px; }
+    .menu { display:none; border:0; background:none; color:white; font-size:24px; }
+    .purpose { background:#f3e8c6; }
+    .purpose .section-title { color:#285941; }
+    .hero { position:relative; min-height:690px; height:min(790px, calc(100svh - 31px)); overflow:hidden; display:grid; align-items:center; background:#9a794b; color:#fffdf3; }
+    .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(12,40,32,.78) 0%,rgba(15,43,34,.62) 42%,rgba(15,43,34,.1) 100%), linear-gradient(0deg,rgba(16,40,32,.28),transparent 45%),url("capibaras-madre-de-dios.jpeg") center 52%/cover; transform:scale(1.015); }
+    .hero::after { content:""; pointer-events:none; position:absolute; inset:0; opacity:.13; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
+    .hero-content { position:relative; z-index:1; width:min(1200px,calc(100% - 64px)); margin:44px auto 0; }
+    .eyebrow { display:flex; align-items:center; gap:11px; margin-bottom:24px; color:#e4efb6; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:34px; height:1px; background:#d9ed94; }
+    h1 { max-width:720px; margin:0; font-family:Georgia,"Times New Roman",serif; font-size:clamp(48px,7.1vw,88px); font-weight:500; letter-spacing:-.055em; line-height:.99; }
+    h1 em { color:#e6edaa; font-weight:400; }
+    .intro { max-width:490px; margin:25px 0 30px; color:#f4f0df; font-size:16px; line-height:1.7; }
+    .actions { display:flex; flex-wrap:wrap; align-items:center; gap:22px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:49px; padding:0 21px; border-radius:999px; background:var(--lime); color:#173b31; font-size:13px; font-weight:750; transition:transform .2s,background .2s; }
+    .button:hover { transform:translateY(-2px); background:#e7f5ad; }
+    .text-link { font-size:13px; font-weight:650; }.text-link span { margin-left:7px; }
+    .hero-bottom { position:absolute; z-index:1; bottom:0; left:0; width:100%; padding:22px max(32px,calc((100% - 1200px)/2)); display:flex; align-items:center; justify-content:space-between; border-top:1px solid #ffffff4d; color:#f6f2de; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+    .location { display:flex; align-items:center; gap:9px; }.location::before { content:""; width:7px; height:7px; border-radius:50%; background:#d9ed94; box-shadow:0 0 0 4px #d9ed9433; }
+    .ods { display:flex; align-items:center; gap:10px; }.ods strong { display:grid; place-items:center; width:32px; height:32px; border-radius:5px; background:#56a63b; color:white; font-size:17px; }
+    .content-section { padding:92px 32px; }
+    .section-inner { width:min(1060px,100%); margin:auto; }
+    .below-label { color:#758373; font-size:10px; font-weight:750; letter-spacing:.17em; text-transform:uppercase; }
+    .section-title { max-width:700px; margin:13px 0 23px; font-family:Georgia,serif; font-size:clamp(34px,5vw,54px); font-weight:500; letter-spacing:-.04em; line-height:1.05; }
+    .section-copy { max-width:750px; margin:0; color:#53665a; font-size:16px; line-height:1.85; }
+    .dedication { background:#fffdf6; }
+    .dedication .section-inner { padding-left:29px; border-left:2px solid #d3e78b; }
+    .problem { background:#eaf0df; }
+    .problem .section-title { color:#285941; }
+    .consequences { background:#fffdf6; }
+    .consequence-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:35px; }
+    .consequence-card { min-height:145px; padding:21px; border:1px solid #e6e8da; border-radius:12px; background:#fff; }
+    .consequence-card span { display:block; margin-bottom:12px; color:#6c8a4d; font-family:Georgia,serif; font-size:25px; }
+    .consequence-card h3 { margin:0; color:#294c3c; font-size:14px; font-weight:650; }
+    .gallery { background:#eaf0df; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:220px; gap:12px; margin-top:34px; }
+    .gallery figure { position:relative; grid-column:span 2; overflow:hidden; margin:0; border-radius:12px; background:#d1d8c5; }
+    .gallery figure:nth-child(1), .gallery figure:nth-child(4) { grid-column:span 3; }
+    .gallery img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .4s; }
+    .gallery figure:hover img { transform:scale(1.04); }
+    .gallery figcaption { position:absolute; inset:auto 0 0; padding:30px 16px 14px; color:white; font-size:13px; font-weight:650; background:linear-gradient(transparent,#10271fbd); }
+    .team { background:#fffdf6; }
+    .team-layout { display:grid; grid-template-columns:1.05fr .95fr; gap:45px; align-items:center; }
+    .team-photo { width:100%; max-height:470px; object-fit:cover; border-radius:14px; }
+    .team-list { display:grid; gap:0; margin:22px 0 0; padding:0; list-style:none; }
+    .team-list li { padding:12px 0; border-bottom:1px solid #e7e9dc; color:#294c3c; font-size:14px; }
+    .school { margin-top:24px; padding:17px 18px; border-radius:10px; background:#eaf0df; }
+    .school strong { display:block; margin-bottom:5px; color:#285941; font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
+    .school span { font-family:Georgia,serif; font-size:17px; }
+    footer { padding:35px 32px; background:#183b30; color:#f6f2de; }
+    .footer-inner { width:min(1060px,100%); margin:auto; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .footer-brand { font-family:Georgia,serif; font-size:18px; }
+    .footer-note { margin-top:5px; color:#c5cfb8; font-size:11px; }
+    .footer-ods { color:#d9ed94; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+    @media(max-width:760px) {
+      nav,.hero-content { width:calc(100% - 40px); } nav { height:70px; }
+      .links { display:none; position:absolute; top:67px; right:20px; width:min(290px,calc(100% - 40px)); padding:12px; border:1px solid #ffffff45; border-radius:14px; background:#183b30f5; box-shadow:0 12px 28px #10271f55; }
+      .links.open { display:flex; align-items:stretch; flex-direction:column; gap:0; }
+      .links a { padding:13px 12px; }
+      .menu { display:block; cursor:pointer; }
+      .hero { min-height:680px; height:calc(100svh - 31px); max-height:850px; }
+      .hero::before { background:linear-gradient(90deg,rgba(12,40,32,.78),rgba(15,43,34,.36)),linear-gradient(0deg,rgba(16,40,32,.38),transparent 65%),url("capibaras-madre-de-dios.jpeg") 58% center/cover; }
+      .hero-content { margin-top:30px; }.intro { max-width:390px; font-size:15px; }
+      .hero-bottom { padding:17px 20px; font-size:9px; }
+      .content-section { padding:66px 20px; }
+      .dedication .section-inner { padding-left:18px; }
+      .consequence-grid { grid-template-columns:1fr; gap:10px; margin-top:25px; }
+      .consequence-card { min-height:auto; }
+      .gallery-grid { grid-template-columns:1fr 1fr; grid-auto-rows:170px; gap:9px; }
+      .gallery figure,.gallery figure:nth-child(1),.gallery figure:nth-child(4) { grid-column:span 1; }
+      .gallery figure:first-child { grid-column:span 2; }
+      .team-layout { grid-template-columns:1fr; gap:25px; }
+      footer { padding:28px 20px; }.footer-inner { align-items:flex-start; flex-direction:column; }
+    }
+    @media(max-width:430px) { h1 { font-size:49px; }.brand { font-size:16px; }.hero-bottom { align-items:flex-start; gap:10px; flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <div class="announcement"><span>✳</span><span>UNA INICIATIVA JOVEN POR NUESTRA TIERRA</span><b>· MADRE DE DIOS, PERÚ</b></div>
+  <header>
+    <nav aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Guardianes de la Biodiversidad, inicio"><span class="brand-mark">✳</span><span>Guardianes de la<small>Biodiversidad · Madre de Dios</small></span></a>
+      <div class="links" id="site-menu"><a href="#inicio">Inicio</a><a href="#dedicatoria">Dedicatoria</a><a href="#proposito">Propósito</a><a href="#problema">Problema</a><a href="#consecuencias">Consecuencias</a><a href="#galeria">Galería</a><a href="#conocenos">Conócenos</a></div>
+      <button class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">☰</button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="eyebrow">Cuidar la vida que nos rodea</div>
+        <h1 id="hero-title">La vida de<br>nuestro bosque<br><em>nos necesita.</em></h1>
+        <p class="intro">Somos jóvenes de Madre de Dios unidos para alzar la voz por nuestra biodiversidad y proteger el hogar que compartimos.</p>
+        <div class="actions"><a class="button" href="#galeria">Descubre por qué importa <span>↗</span></a></div>
+      </div>
+      <div class="hero-bottom"><span class="location">Madre de Dios · Amazonía peruana</span><span class="ods"><strong>15</strong> Vida de ecosistemas terrestres</span></div>
+    </section>
+    <section class="content-section dedication" id="dedicatoria" aria-labelledby="dedication-title">
+      <div class="section-inner">
+        <div class="below-label">Nuestra razón de ser</div>
+        <h2 class="section-title" id="dedication-title">Dedicado a quienes decidieron cuidar nuestra casa común.</h2>
+        <p class="section-copy">La creación de esta plataforma es el resultado de una visión compartida: una iniciativa impulsada por jóvenes con el firme propósito de construir una sociedad más sana para todos los madrediosenses y contribuir activamente a la preservación de nuestra casa común.<br><br>Este esfuerzo está dedicado a todos los jóvenes de la región de Madre de Dios que no se rindieron ante las adversidades de su entorno y que decidieron no quedarse de brazos cruzados frente a la ignorancia y la indiferencia ante la pérdida de biodiversidad.</p>
+      </div>
+    </section>
+    <section class="content-section purpose" id="proposito" aria-labelledby="purpose-title">
+      <div class="section-inner">
+        <div class="below-label">Nuestro propósito</div>
+        <h2 class="section-title" id="purpose-title">Concientizar hoy para proteger la vida de mañana.</h2>
+        <p class="section-copy">Queremos sensibilizar a las personas sobre la pérdida de biodiversidad en Madre de Dios y promover el cuidado y la conservación de nuestros ecosistemas. Creemos que una sociedad más informada puede sumarse a la protección de nuestra casa común.</p>
+      </div>
+    </section>
+    <section class="content-section problem" id="problema" aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="below-label">El desafío en nuestra región</div>
+        <h2 class="section-title" id="problem-title">La biodiversidad de Madre de Dios está en riesgo.</h2>
+        <p class="section-copy">En Madre de Dios, la pérdida de biodiversidad es un problema que afecta a los ecosistemas, la flora y la fauna de nuestra región. Sus principales causas son la deforestación, la contaminación, la minería ilegal y la explotación excesiva de los recursos naturales.</p>
+      </div>
+    </section>
+    <section class="content-section consequences" id="consecuencias" aria-labelledby="consequences-title">
+      <div class="section-inner">
+        <div class="below-label">Lo que está en juego</div>
+        <h2 class="section-title" id="consequences-title">Cuando se pierde un hábitat, todo se desequilibra.</h2>
+        <p class="section-copy">Estas actividades destruyen hábitats de nuestra localidad, reducen las poblaciones de especies y desequilibran los ecosistemas. Entre sus consecuencias están la aparición de enfermedades, la migración forzada de animales y la contaminación de los ríos.</p>
+        <div class="consequence-grid">
+          <article class="consequence-card"><span>01</span><h3>Destrucción de hábitats y pérdida de especies</h3></article>
+          <article class="consequence-card"><span>02</span><h3>Ecosistemas en desequilibrio y animales desplazados</h3></article>
+          <article class="consequence-card"><span>03</span><h3>Ríos contaminados y riesgos para la salud</h3></article>
+        </div>
+      </div>
+    </section>
+    <section class="content-section gallery" id="galeria" aria-labelledby="gallery-title">
+      <div class="section-inner">
+        <div class="below-label">Imágenes de nuestra región</div>
+        <h2 class="section-title" id="gallery-title">Un territorio de vida que merece ser protegido.</h2>
+        <p class="section-copy">La Amazonía nos da vida. Estas imágenes muestran sus bosques y algunos de los impactos que amenazan sus ecosistemas.</p>
+        <div class="gallery-grid">
+          <figure><img src="bosque-amazonico.jpeg" alt="Bosque amazónico de Madre de Dios bajo un cielo abierto" loading="lazy"><figcaption>Bosque amazónico</figcaption></figure>
+          <figure><img src="mineria-rio.jpeg" alt="Maquinaria de extracción en un río" loading="lazy"><figcaption>Actividad minera en el río</figcaption></figure>
+          <figure><img src="mineria-rios-madre-de-dios.jpeg" alt="Equipos de extracción sobre una zona ribereña" loading="lazy"><figcaption>Presión sobre las riberas</figcaption></figure>
+          <figure><img src="impacto-mineria.jpeg" alt="Zona de extracción minera y suelos removidos" loading="lazy"><figcaption>Impacto de la minería</figcaption></figure>
+          <figure><img src="deforestacion.jpeg" alt="Árbol talado y vegetación removida en el bosque" loading="lazy"><figcaption>Pérdida de cobertura forestal</figcaption></figure>
+        </div>
+      </div>
+    </section>
+    <section class="content-section team" id="conocenos" aria-labelledby="team-title">
+      <div class="section-inner team-layout">
+        <img class="team-photo" src="equipo-guardianes.jpeg" alt="Integrantes del equipo Guardianes de la Biodiversidad trabajando juntos" loading="lazy">
+        <div>
+          <div class="below-label">Conócenos</div>
+          <h2 class="section-title" id="team-title">Jóvenes unidos por nuestra tierra.</h2>
+          <p class="section-copy">Somos el equipo detrás de esta iniciativa de concientización sobre la biodiversidad en Madre de Dios.</p>
+          <ul class="team-list">
+            <li>Victoria Anabell Mamani Quispe</li>
+            <li>Jhosep Anthony Condori Condori</li>
+            <li>Noelia Abigail Sánchez Yucra</li>
+            <li>Dyhara Mayte Orccohuaranca Ramos</li>
+          </ul>
+          <div class="school"><strong>Institución educativa</strong><span>I.E. Básica Regular Nuestra Señora de las Mercedes</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="ods">
+    <div class="footer-inner">
+      <div><div class="footer-brand">Guardianes de la Biodiversidad</div><div class="footer-note">Una iniciativa joven por la vida en Madre de Dios.</div></div>
+      <div class="footer-ods">ODS 15 · Vida de ecosistemas terrestres</div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.querySelector('.menu');
+    const siteMenu = document.querySelector('#site-menu');
+    menuButton.addEventListener('click', () => {
+      const isOpen = siteMenu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    });
+    siteMenu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        siteMenu.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Abrir menú');
+      }
+    });
+  </script>
+</body>
+</html>
