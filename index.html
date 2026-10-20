@@ -19,8 +19,14 @@
     .brand { display:flex; align-items:center; gap:11px; font-family:Georgia,serif; font-weight:700; font-size:19px; line-height:1.05; letter-spacing:-.04em; }
     .brand-mark { display:grid; place-items:center; width:40px; height:40px; border:1px solid #ffffff9c; border-radius:50%; font-size:20px; }
     .brand small { display:block; margin-top:4px; font:600 9px/1.2 ui-sans-serif,system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
-    .links { display:flex; align-items:center; gap:clamp(10px,1.5vw,20px); font-size:12px; font-weight:550; }
+    .links { display:flex; align-items:center; gap:clamp(8px,1vw,15px); font-size:11px; font-weight:550; }
     .links a { transition:opacity .2s; }.links a:hover { opacity:.72; }
+    .nav-more { position:relative; }
+    .nav-more summary { padding:8px 10px; border:1px solid #ffffff80; border-radius:99px; cursor:pointer; list-style:none; white-space:nowrap; }
+    .nav-more summary::-webkit-details-marker { display:none; }
+    .nav-more-menu { position:absolute; top:42px; right:0; z-index:5; display:grid; grid-template-columns:1fr 1fr; min-width:350px; gap:2px; padding:10px; border:1px solid #ffffff35; border-radius:12px; background:#183b30f7; box-shadow:0 12px 28px #10271f55; }
+    .nav-more-menu a { padding:10px; border-radius:7px; white-space:nowrap; }
+    .nav-more-menu a:hover { background:#ffffff15; }
     .nav-cta { padding:12px 17px; border:1px solid #ffffffb0; border-radius:999px; }
     .menu { display:none; border:0; background:none; color:white; font-size:24px; }
     .purpose { background:#f3e8c6; }
@@ -70,6 +76,60 @@
     .school { margin-top:24px; padding:17px 18px; border-radius:10px; background:#eaf0df; }
     .school strong { display:block; margin-bottom:5px; color:#285941; font-size:10px; letter-spacing:.13em; text-transform:uppercase; }
     .school span { font-family:Georgia,serif; font-size:17px; }
+    .species-section { background:#f3e8c6; }
+    .species-grid,.action-grid,.directory-grid,.impact-grid,.faq-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:32px; }
+    .species-card,.action-card,.directory-card,.impact-card,.faq-item { overflow:hidden; border:1px solid #e4e8dc; border-radius:14px; background:#fff; }
+    .species-card img { display:block; width:100%; height:195px; object-fit:cover; background:#dfe7d1; }
+    .species-body,.action-card,.directory-card,.impact-card { padding:20px; }
+    .species-body h3,.action-card h3,.directory-card h3,.impact-card h3 { margin:0 0 5px; color:#285941; font-family:Georgia,serif; font-size:22px; font-weight:600; }
+    .scientific { display:block; margin-bottom:14px; color:#758373; font-size:12px; font-style:italic; }
+    .species-body p,.action-card p,.directory-card p,.impact-card p { margin:9px 0 0; color:#53665a; font-size:13px; line-height:1.65; }
+    .species-body p strong { color:#294c3c; }
+    .card-icon { display:grid; place-items:center; width:42px; height:42px; margin-bottom:16px; border-radius:12px; background:#eaf0df; font-size:21px; }
+    .guardians { background:#fffdf6; }
+    .challenge { background:#183b30; color:#f6f2de; }
+    .challenge .below-label { color:#d9ed94; }
+    .challenge .section-title { color:#fffdf3; }
+    .challenge .section-copy { color:#e3eadb; }
+    .challenge-box { margin-top:28px; padding:24px; border:1px solid #ffffff33; border-radius:16px; background:#ffffff0c; }
+    .progress-head { display:flex; align-items:center; justify-content:space-between; gap:15px; margin-bottom:12px; font-size:13px; }
+    .progress-track { height:10px; overflow:hidden; border-radius:99px; background:#ffffff25; }
+    .progress-fill { width:0; height:100%; border-radius:inherit; background:#d8ed8e; transition:width .3s ease; }
+    .challenge-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; margin:21px 0; padding:0; list-style:none; }
+    .challenge-list label { display:flex; align-items:flex-start; gap:11px; padding:12px 0; color:#f6f2de; font-size:13px; line-height:1.5; cursor:pointer; }
+    .challenge-list input { flex:none; width:18px; height:18px; margin:1px 0 0; accent-color:#d8ed8e; }
+    .challenge-actions { display:flex; align-items:center; gap:18px; }
+    .challenge .button { border:0; cursor:pointer; }
+    .button-secondary { padding:12px 17px; border:1px solid #ffffff70; border-radius:99px; background:transparent; color:#fffdf3; font:inherit; cursor:pointer; }
+    .success-message { min-height:22px; margin:13px 0 0; color:#d8ed8e; font-size:14px; font-weight:700; }
+    .network { background:#eaf0df; }
+    .directory-card { display:flex; flex-direction:column; align-items:flex-start; }
+    .directory-card .card-icon { background:#f2e8c9; }
+    .directory-card a,.reference-list a { color:#285941; font-size:13px; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+    .directory-card a { margin-top:auto; padding-top:17px; }
+    .directory-note { margin-top:22px; color:#657269; font-size:12px; line-height:1.6; }
+    .ventures { background:#fffdf6; }
+    .impact { background:#f3e8c6; }
+    .status-chip { display:inline-flex; margin:0 0 14px; padding:6px 10px; border-radius:99px; background:#eaf0df; color:#285941; font-size:10px; font-weight:750; letter-spacing:.1em; text-transform:uppercase; }
+    .suggest { background:#fffdf6; }
+    .suggest-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:25px; }
+    .suggest-form label { display:grid; gap:7px; color:#294c3c; font-size:12px; font-weight:700; }
+    .suggest-form input,.suggest-form select,.suggest-form textarea { width:100%; min-height:44px; padding:11px 12px; border:1px solid #d6ddcf; border-radius:8px; background:white; color:#173b31; font:inherit; }
+    .suggest-form textarea { min-height:88px; resize:vertical; }
+    .suggest-form .wide { grid-column:1/-1; }
+    .suggest-form button { justify-self:start; border:0; cursor:pointer; }
+    .form-note,.form-status { color:#657269; font-size:12px; line-height:1.6; }
+    .form-status { min-height:20px; margin:0; }
+    .faq { background:#eaf0df; }
+    .faq-grid { grid-template-columns:1fr 1fr; }
+    .faq-item { padding:0 18px; }
+    .faq-item summary { padding:17px 20px 17px 0; color:#285941; font-size:14px; font-weight:700; cursor:pointer; }
+    .faq-item p { margin:0 0 17px; color:#53665a; font-size:13px; line-height:1.65; }
+    .references { background:#fffdf6; }
+    .reference-list { columns:2; column-gap:32px; margin:22px 0 0; padding-left:20px; }
+    .reference-list li { break-inside:avoid; margin:0 0 13px; color:#53665a; font-size:13px; line-height:1.55; }
+    .back-top { position:fixed; z-index:5; right:20px; bottom:20px; display:grid; place-items:center; width:46px; height:46px; border:1px solid #ffffff4d; border-radius:50%; background:#183b30; color:white; font-size:20px; box-shadow:0 4px 14px #10271f33; }
+    .photo-credit { display:block; margin-top:8px; color:#758373; font-size:10px; line-height:1.4; }
     footer { padding:35px 32px; background:#183b30; color:#f6f2de; }
     .footer-inner { width:min(1060px,100%); margin:auto; display:flex; justify-content:space-between; align-items:center; gap:20px; }
     .footer-brand { font-family:Georgia,serif; font-size:18px; }
@@ -77,9 +137,12 @@
     .footer-ods { color:#d9ed94; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
     @media(max-width:760px) {
       nav,.hero-content { width:calc(100% - 40px); } nav { height:70px; }
-      .links { display:none; position:absolute; top:67px; right:20px; width:min(290px,calc(100% - 40px)); padding:12px; border:1px solid #ffffff45; border-radius:14px; background:#183b30f5; box-shadow:0 12px 28px #10271f55; }
+      .links { display:none; position:absolute; top:67px; right:20px; width:min(310px,calc(100% - 40px)); max-height:75vh; overflow:auto; padding:12px; border:1px solid #ffffff45; border-radius:14px; background:#183b30f5; box-shadow:0 12px 28px #10271f55; }
       .links.open { display:flex; align-items:stretch; flex-direction:column; gap:0; }
       .links a { padding:13px 12px; }
+      .nav-more summary { margin:8px 12px; border-radius:8px; }
+      .nav-more-menu { position:static; min-width:0; grid-template-columns:1fr; padding:4px; border:0; box-shadow:none; background:transparent; }
+      .nav-more-menu a { white-space:normal; }
       .menu { display:block; cursor:pointer; }
       .hero { min-height:680px; height:calc(100svh - 31px); max-height:850px; }
       .hero::before { background:linear-gradient(90deg,rgba(12,40,32,.78),rgba(15,43,34,.36)),linear-gradient(0deg,rgba(16,40,32,.38),transparent 65%),url("capibaras-madre-de-dios.jpeg") 58% center/cover; }
@@ -93,9 +156,16 @@
       .gallery figure,.gallery figure:nth-child(1),.gallery figure:nth-child(4) { grid-column:span 1; }
       .gallery figure:first-child { grid-column:span 2; }
       .team-layout { grid-template-columns:1fr; gap:25px; }
+      .species-grid,.action-grid,.directory-grid,.impact-grid { grid-template-columns:1fr 1fr; }
+      .challenge-list { grid-template-columns:1fr; gap:0; }
+      .faq-grid { grid-template-columns:1fr; }
+      .suggest-form { grid-template-columns:1fr; }
+      .suggest-form .wide { grid-column:auto; }
+      .reference-list { columns:1; }
       footer { padding:28px 20px; }.footer-inner { align-items:flex-start; flex-direction:column; }
     }
-    @media(max-width:430px) { h1 { font-size:49px; }.brand { font-size:16px; }.hero-bottom { align-items:flex-start; gap:10px; flex-direction:column; } }
+    @media(max-width:430px) { h1 { font-size:49px; }.brand { font-size:16px; }.hero-bottom { align-items:flex-start; gap:10px; flex-direction:column; }.species-grid,.action-grid,.directory-grid,.impact-grid { grid-template-columns:1fr; }.challenge-box { padding:17px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
   </style>
 </head>
 <body>
@@ -103,7 +173,12 @@
   <header>
     <nav aria-label="Navegación principal">
       <a class="brand" href="#inicio" aria-label="Guardianes de la Biodiversidad, inicio"><span class="brand-mark">✳</span><span>Guardianes de la<small>Biodiversidad · Madre de Dios</small></span></a>
-      <div class="links" id="site-menu"><a href="#inicio">Inicio</a><a href="#dedicatoria">Dedicatoria</a><a href="#proposito">Propósito</a><a href="#problema">Problema</a><a href="#consecuencias">Consecuencias</a><a href="#galeria">Galería</a><a href="#conocenos">Conócenos</a></div>
+      <div class="links" id="site-menu">
+        <a href="#inicio">Inicio</a><a href="#dedicatoria">Dedicatoria</a><a href="#proposito">Propósito</a><a href="#problema">Problema</a><a href="#consecuencias">Consecuencias</a>
+        <details class="nav-more"><summary>Explora ↓</summary><div class="nav-more-menu">
+          <a href="#galeria">Galería</a><a href="#biodiversidad">Conoce la biodiversidad</a><a href="#guardianes">¡Yo también soy guardián!</a><a href="#reto">Reto de 7 días</a><a href="#red">Red de guardianes</a><a href="#emprendimientos">Emprendimientos amazónicos</a><a href="#impacto">Nuestro impacto</a><a href="#conocenos">Conócenos</a><a href="#preguntas">Preguntas frecuentes</a><a href="#referencias">Fuentes y referencias</a><a href="#sugerencias">Sugerir una iniciativa</a>
+        </div></details>
+      </div>
       <button class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">☰</button>
     </nav>
   </header>
@@ -158,9 +233,12 @@
         <div class="gallery-grid">
           <figure><img src="bosque-amazonico.jpeg" alt="Bosque amazónico de Madre de Dios bajo un cielo abierto" loading="lazy"><figcaption>Bosque amazónico</figcaption></figure>
           <figure><img src="mineria-rio.jpeg" alt="Maquinaria de extracción en un río" loading="lazy"><figcaption>Actividad minera en el río</figcaption></figure>
-          <figure><img src="mineria-rios-madre-de-dios.jpeg" alt="Equipos de extracción sobre una zona ribereña" loading="lazy"><figcaption>Presión sobre las riberas</figcaption></figure>
           <figure><img src="impacto-mineria.jpeg" alt="Zona de extracción minera y suelos removidos" loading="lazy"><figcaption>Impacto de la minería</figcaption></figure>
           <figure><img src="deforestacion.jpeg" alt="Árbol talado y vegetación removida en el bosque" loading="lazy"><figcaption>Pérdida de cobertura forestal</figcaption></figure>
+          <figure><img src="mono-aullador.jpeg" alt="Mono aullador entre ramas del bosque" loading="lazy"><figcaption>Mono aullador en el bosque amazónico</figcaption></figure>
+          <figure><img src="rio-tambopata.jpeg" alt="Embarcación en un río amazónico al amanecer" loading="lazy"><figcaption>Un río que conecta la vida</figcaption></figure>
+          <figure><img src="atardecer-amazonia.jpeg" alt="Palmeras amazónicas reflejadas al atardecer" loading="lazy"><figcaption>Atardecer en la Amazonía</figcaption></figure>
+          <figure><img src="capibaras-bosque.jpeg" alt="Grupo de capibaras junto a vegetación ribereña" loading="lazy"><figcaption>Capibaras en su hábitat</figcaption></figure>
         </div>
       </div>
     </section>
@@ -170,15 +248,151 @@
         <div>
           <div class="below-label">Conócenos</div>
           <h2 class="section-title" id="team-title">Jóvenes unidos por nuestra tierra.</h2>
-          <p class="section-copy">Somos el equipo detrás de esta iniciativa de concientización sobre la biodiversidad en Madre de Dios.</p>
-          <ul class="team-list">
-            <li>Victoria Anabell Mamani Quispe</li>
-            <li>Jhosep Anthony Condori Condori</li>
-            <li>Noelia Abigail Sánchez Yucra</li>
-            <li>Dyhara Mayte Orccohuaranca Ramos</li>
-          </ul>
+          <p class="section-copy">Somos el equipo detrás de esta iniciativa de concientización sobre la biodiversidad en Madre de Dios. El proyecto es desarrollado por un equipo estudiantil de cuatro integrantes.</p>
           <div class="school"><strong>Institución educativa</strong><span>I.E. Básica Regular Nuestra Señora de las Mercedes</span></div>
         </div>
+      </div>
+    </section>
+    <section class="content-section species-section" id="biodiversidad" aria-labelledby="species-title">
+      <div class="section-inner">
+        <div class="below-label">Aprender para cuidar</div>
+        <h2 class="section-title" id="species-title">Conoce nuestra biodiversidad.</h2>
+        <p class="section-copy">Estas especies forman parte de los bosques y ríos amazónicos de Madre de Dios. Para el mono choro, SERFOR reconoce la subespecie Lagothrix lagotricha tschudii en la región; nombres científicos basados en las fuentes citadas. Las fotografías son ilustrativas y algunas fueron tomadas fuera de Madre de Dios.</p>
+        <div class="species-grid">
+          <article class="species-card"><img src="jaguar-madre-de-dios.jpeg" alt="Jaguar recostado sobre una rama en el bosque" loading="lazy"><div class="species-body"><h3>Jaguar</h3><span class="scientific">Panthera onca</span><p><strong>Hábitat:</strong> bosques amazónicos, riberas y humedales.</p><p><strong>Importancia:</strong> gran depredador que ayuda a mantener el equilibrio de las comunidades de fauna.</p><p><strong>Amenazas:</strong> pérdida y fragmentación del hábitat, caza y conflictos con actividades humanas.</p><p><strong>Ayuda:</strong> no compres partes de fauna silvestre y apoya la conservación de los bosques.</p></div></article>
+          <article class="species-card"><img src="lobo-de-rio.jpeg" alt="Lobo de río alimentándose de un pez en el agua" loading="lazy"><div class="species-body"><h3>Lobo de río</h3><span class="scientific">Pteronura brasiliensis</span><p><strong>Hábitat:</strong> ríos, lagos y cochas amazónicas; SERNANP lo registra en Tambopata.</p><p><strong>Importancia:</strong> depredador acuático que forma parte de las cadenas alimentarias de ríos y lagunas.</p><p><strong>Amenazas:</strong> contaminación por actividades mineras, alteración de riberas y perturbación humana.</p><p><strong>Ayuda:</strong> mantén distancia al observarlo y evita contaminar ríos y cochas.</p></div></article>
+          <article class="species-card"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Arara-vermelha_%28Ara_chloropterus%29_-_tamb%C3%A9m_chamada_arara-verde%2C_araracanga%2C_aracanga%2C_arara-macau%2C_ararapiranga_e_macau_-_exibe_suas_cores_vibrantes_no_Buraco_das_Araras%2C_Mato_Grosso_do_Sul.jpg" alt="Guacamayo rojo y verde posado en una rama" loading="lazy"><div class="species-body"><h3>Guacamayos</h3><span class="scientific">Ara spp. · grupo de especies</span><p><strong>Hábitat:</strong> bosques amazónicos y zonas con árboles grandes para alimentarse y anidar.</p><p><strong>Importancia:</strong> contribuyen a la dinámica del bosque mediante el consumo y movimiento de semillas.</p><p><strong>Amenazas:</strong> pérdida de árboles de anidación y captura o comercio ilegal de aves.</p><p><strong>Ayuda:</strong> nunca compres aves silvestres; obsérvalas libres y a distancia.</p><a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Arara-vermelha_(Ara_chloropterus)_-_tamb%C3%A9m_chamada_arara-verde,_araracanga,_aracanga,_arara-macau,_ararapiranga_e_macau_-_exibe_suas_cores_vibrantes_no_Buraco_das_Araras,_Mato_Grosso_do_Sul.jpg" target="_blank" rel="noopener">Foto: Fernando Afonso Visentin Favaro · CC BY-SA 4.0</a></div></article>
+          <article class="species-card"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lagothrix_lagotricha.jpg?width=900" alt="Mono choro o mono lanudo entre el follaje" loading="lazy"><div class="species-body"><h3>Mono choro</h3><span class="scientific">Lagothrix lagotricha tschudii</span><p><strong>Hábitat:</strong> bosques tropicales amazónicos; SERFOR incluye Madre de Dios en la distribución de esta subespecie.</p><p><strong>Importancia:</strong> primate arborícola que participa en la dispersión de semillas.</p><p><strong>Amenazas:</strong> pérdida de bosque, cacería y captura para el comercio de fauna.</p><p><strong>Ayuda:</strong> no lo tengas como mascota; reporta el tráfico a las autoridades competentes.</p><a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Lagothrix_lagotricha.jpg" target="_blank" rel="noopener">Foto: Evgenia Kononova · dominio público</a></div></article>
+          <article class="species-card"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Brazil_nut_tree_in_the_rainforest.jpg?width=900" alt="Árbol de castaña amazónica sobre el dosel del bosque" loading="lazy"><div class="species-body"><h3>Castaña amazónica</h3><span class="scientific">Bertholletia excelsa</span><p><strong>Hábitat:</strong> bosques amazónicos; SERFOR documenta su fenología y aprovechamiento en Madre de Dios.</p><p><strong>Importancia:</strong> sus frutos alimentan fauna y su recolección puede generar ingresos forestales sin tumbar el árbol.</p><p><strong>Amenazas:</strong> deforestación, fragmentación y tala de árboles reproductivos.</p><p><strong>Ayuda:</strong> elige castaña de origen legal y responsable, y conserva árboles y bosque.</p><a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Brazil_nut_tree_in_the_rainforest.jpg" target="_blank" rel="noopener">Foto: My Favorite Pet Sitter · CC BY 2.0</a></div></article>
+          <article class="species-card"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vista_contrapicada_Shihuahuaco_o_Dipteryx_micrantha_-_Jard%C3%ADn_bot%C3%A1nico_de_la_UNAS_-_Tingo_Mar%C3%ADa.jpg?width=900" alt="Tronco alto de shihuahuaco visto desde abajo" loading="lazy"><div class="species-body"><h3>Shihuahuaco</h3><span class="scientific">Dipteryx micrantha</span><p><strong>Hábitat:</strong> bosques amazónicos; SERFOR documenta la especie en estudios forestales de Madre de Dios.</p><p><strong>Importancia:</strong> árbol emergente que ofrece estructura y recursos a distintas especies del bosque.</p><p><strong>Amenazas:</strong> extracción maderera intensiva y degradación o fragmentación del hábitat.</p><p><strong>Ayuda:</strong> pregunta por el origen legal y trazable de la madera antes de comprarla.</p><a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Vista_contrapicada_Shihuahuaco_o_Dipteryx_micrantha_-_Jard%C3%ADn_bot%C3%A1nico_de_la_UNAS_-_Tingo_Mar%C3%ADa.jpg" target="_blank" rel="noopener">Foto: Luciepotier · CC BY-SA 4.0</a></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="content-section guardians" id="guardianes" aria-labelledby="guardians-title">
+      <div class="section-inner">
+        <div class="below-label">Acciones para todos</div>
+        <h2 class="section-title" id="guardians-title">¡Yo también soy guardián!</h2>
+        <p class="section-copy">Pequeñas decisiones diarias y actividades organizadas ayudan a cuidar los ecosistemas de Madre de Dios.</p>
+        <div class="action-grid">
+          <article class="action-card"><span class="card-icon" aria-hidden="true">💧</span><h3>Protege ríos y quebradas</h3><p>No arrojes basura, aceite ni sustancias contaminantes al agua. Reduce plásticos desechables y participa solo en jornadas de limpieza organizadas con medidas de seguridad.</p></article>
+          <article class="action-card"><span class="card-icon" aria-hidden="true">🌳</span><h3>Cuida los bosques</h3><p>Protege los árboles y evita apoyar la tala ilegal. Reforesta con especies nativas y orientación técnica; respeta los hábitats y no extraigas plantas silvestres.</p></article>
+          <article class="action-card"><span class="card-icon" aria-hidden="true">♻️</span><h3>Maneja tus residuos</h3><p>Separa residuos según las indicaciones de tu localidad, reutiliza materiales y consulta dónde reciben reciclables. No quemes ni abandones basura.</p></article>
+          <article class="action-card"><span class="card-icon" aria-hidden="true">🐾</span><h3>Protege la fauna</h3><p>No compres ni captures animales silvestres como mascotas, no dañes sus hábitats, obsérvalos desde lejos y rechaza productos hechos con partes de fauna.</p></article>
+          <article class="action-card"><span class="card-icon" aria-hidden="true">🧺</span><h3>Consume responsablemente</h3><p>Prefiere productos regionales de origen legal y responsable, como artesanías y productos amazónicos sostenibles. Pregunta cómo se obtuvieron sus materiales.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="content-section challenge" id="reto" aria-labelledby="challenge-title">
+      <div class="section-inner">
+        <div class="below-label">Una acción por día</div>
+        <h2 class="section-title" id="challenge-title">7 días para convertirte en guardián.</h2>
+        <p class="section-copy">Completa los retos a tu ritmo. Tu progreso se guarda solo en este navegador y no solicitamos datos personales.</p>
+        <div class="challenge-box">
+          <div class="progress-head"><strong>Tu progreso</strong><span id="progress-text" aria-live="polite">0 de 7 retos completados</span></div>
+          <div class="progress-track" id="progress-track" role="progressbar" aria-label="Progreso del reto de siete días" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div></div>
+          <ul class="challenge-list" id="challenge-list">
+            <li><label><input type="checkbox" data-day="0">Día 1: aprende el nombre de una especie de Madre de Dios y comparte un dato confiable.</label></li>
+            <li><label><input type="checkbox" data-day="1">Día 2: lleva una botella reutilizable y evita un plástico de un solo uso.</label></li>
+            <li><label><input type="checkbox" data-day="2">Día 3: separa tus residuos y averigua qué reciclables reciben en tu localidad.</label></li>
+            <li><label><input type="checkbox" data-day="3">Día 4: observa un ave o animal silvestre sin acercarte ni alimentarlo.</label></li>
+            <li><label><input type="checkbox" data-day="4">Día 5: conversa en casa sobre cómo evitar contaminar ríos y quebradas.</label></li>
+            <li><label><input type="checkbox" data-day="5">Día 6: elige un producto regional legal y pregunta por su origen.</label></li>
+            <li><label><input type="checkbox" data-day="6">Día 7: busca una actividad ambiental organizada y segura para participar.</label></li>
+          </ul>
+          <div class="challenge-actions"><button class="button-secondary" id="reset-challenge" type="button">Reiniciar reto</button></div>
+          <p class="success-message" id="success-message" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+    <section class="content-section network" id="red" aria-labelledby="network-title">
+      <div class="section-inner">
+        <div class="below-label">Iniciativas en la región</div>
+        <h2 class="section-title" id="network-title">Red de guardianes de Madre de Dios.</h2>
+        <p class="section-copy">Organizaciones e iniciativas con información pública sobre conservación, restauración, investigación o rescate de fauna.</p>
+        <div class="directory-grid">
+          <article class="directory-card"><span class="card-icon" aria-hidden="true">🌱</span><h3>Camino Verde Tambopata</h3><p>Trabaja en regeneración forestal, viveros de especies nativas y sistemas agroforestales. Tiene centros en la región, incluidos Baltimori y La Joya.</p><p><strong>Ubicación general:</strong> Tambopata y Puerto Maldonado, Madre de Dios.</p><p>Su web confirma consultas para visitas, voluntariado y prácticas; coordina disponibilidad y condiciones antes de ir.</p><a href="https://caminoverde.org/centers" target="_blank" rel="noopener">Centros y programas ↗</a><a href="https://caminoverdetambopata.org/contacto" target="_blank" rel="noopener">Contacto oficial ↗</a></article>
+          <article class="directory-card"><span class="card-icon" aria-hidden="true">🔬</span><h3>Conservación Amazónica – ACCA</h3><p>Gestiona la Concesión para Conservación Los Amigos y la Estación Biológica Los Amigos, dedicadas a conservación e investigación.</p><p><strong>Ubicación general:</strong> confluencia de los ríos Madre de Dios y Los Amigos.</p><p>La estación ofrece información para experiencias educativas; escribe primero para consultar acceso y condiciones.</p><a href="https://acca.org.pe/los-amigos/" target="_blank" rel="noopener">Los Amigos · ACCA ↗</a><a href="mailto:ciencia@conservacionamazonica.org">Consultar a la estación ↗</a></article>
+          <article class="directory-card"><span class="card-icon" aria-hidden="true">🌳</span><h3>ARBIO Perú</h3><p>Conserva y estudia bosques amazónicos y árboles grandes en la cuenca del río Las Piedras.</p><p><strong>Ubicación general:</strong> distrito de Las Piedras, provincia de Tambopata.</p><p>Su web publica experiencias y visitas; confirma fechas, traslado y requisitos directamente con la organización.</p><a href="https://www.arbioperu.org/" target="_blank" rel="noopener">Sitio oficial ↗</a><a href="https://www.arbioperu.org/visita-arbio/" target="_blank" rel="noopener">Información de visitas ↗</a></article>
+          <article class="directory-card"><span class="card-icon" aria-hidden="true">🦜</span><h3>Amazon Shelter</h3><p>Centro de rehabilitación y liberación de fauna silvestre en Tambopata; informa sobre rescate y rehabilitación de animales afectados por tráfico y pérdida de hábitat.</p><p><strong>Ubicación general:</strong> Tambopata, Madre de Dios.</p><p>Su web ofrece información de voluntariado. Contacta directamente y no visites sin autorización previa.</p><a href="https://amazonshelter.org/" target="_blank" rel="noopener">Sitio oficial ↗</a><a href="https://amazonshelter.org/volunteer-1" target="_blank" rel="noopener">Voluntariado ↗</a></article>
+        </div>
+        <p class="directory-note">La información puede cambiar. Confirma datos, disponibilidad, permisos y condiciones de acceso con cada organización antes de visitar o colaborar.</p>
+      </div>
+    </section>
+    <section class="content-section ventures" id="emprendimientos" aria-labelledby="ventures-title">
+      <div class="section-inner">
+        <div class="below-label">Economías locales y productos regionales</div>
+        <h2 class="section-title" id="ventures-title">Emprendimientos amazónicos.</h2>
+        <p class="section-copy">Compartimos organizaciones con información pública sobre productos regionales. La página de cada iniciativa describe sus propios procesos; verifica origen, permisos y disponibilidad antes de comprar.</p>
+        <div class="directory-grid">
+          <article class="directory-card"><span class="card-icon" aria-hidden="true">🍫</span><h3>Agrobosque</h3><p>Cooperativa agraria de Madre de Dios que presenta productos derivados del cacao nativo y datos de contacto públicos.</p><p><strong>Ubicación publicada:</strong> carretera Interoceánica, km 129, Tambopata–Inambari, Puerto Maldonado.</p><a href="https://www.agrobosque.com.pe/" target="_blank" rel="noopener">Productos e información oficial ↗</a></article>
+          <article class="directory-card"><span class="card-icon" aria-hidden="true">🍫</span><h3>Cooperativa Tambopata Candamo</h3><p>Cooperativa de Madre de Dios que informa sobre producción y comercialización de cacao y actividades agroforestales.</p><p><strong>Ubicación publicada:</strong> Urbanización Los Castaños, Puerto Maldonado.</p><a href="https://cooptambopata.com/" target="_blank" rel="noopener">Conoce la cooperativa ↗</a></article>
+        </div>
+        <p class="directory-note">No damos por verificada una certificación ambiental de estos productos. Pregunta por permisos y trazabilidad; no compres productos hechos con partes de animales silvestres o flora extraída ilegalmente.</p>
+      </div>
+    </section>
+    <section class="content-section impact" id="impacto" aria-labelledby="impact-title">
+      <div class="section-inner">
+        <div class="below-label">Transparencia y aprendizaje</div>
+        <h2 class="section-title" id="impact-title">Nuestro impacto.</h2>
+        <p class="section-copy">Aún no registramos resultados verificados de actividades del proyecto. Por ahora, presentamos un plan pendiente de ejecución; añadiremos cifras y fotografías autorizadas cuando existan registros confirmados.</p>
+        <div class="impact-grid">
+          <article class="impact-card"><span class="status-chip">Meta pendiente</span><h3>Educación ambiental</h3><p>Organizar una actividad educativa sobre biodiversidad local y documentar fecha, contenido, número de participantes y aprendizajes.</p></article>
+          <article class="impact-card"><span class="status-chip">Meta pendiente</span><h3>Acción comunitaria segura</h3><p>Coordinar una jornada de limpieza o restauración con orientación técnica, permisos y medidas de seguridad; registrar resultados sin estimaciones.</p></article>
+          <article class="impact-card"><span class="status-chip">Meta pendiente</span><h3>Seguimiento y evidencias</h3><p>Guardar fotografías autorizadas, lista de actividades realizadas, participantes contabilizados y aprendizajes para actualizar esta sección con transparencia.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="content-section faq" id="preguntas" aria-labelledby="faq-title">
+      <div class="section-inner">
+        <div class="below-label">Respuestas rápidas</div>
+        <h2 class="section-title" id="faq-title">Preguntas frecuentes.</h2>
+        <div class="faq-grid">
+          <details class="faq-item"><summary>¿Qué hago si encuentro un animal silvestre herido?</summary><p>No lo manipules ni intentes alimentarlo. Mantén distancia y comunícate con la autoridad regional competente o SERFOR para recibir instrucciones.</p></details>
+          <details class="faq-item"><summary>¿Puedo tener un mono o un ave silvestre como mascota?</summary><p>No. La fauna silvestre debe permanecer en su hábitat. No compres ni captures animales; informa a la autoridad sobre posible tráfico.</p></details>
+          <details class="faq-item"><summary>¿Dónde puedo reciclar en mi localidad?</summary><p>Los puntos de recepción varían por distrito y pueden cambiar. Consulta a tu municipalidad o a la organización local de reciclaje antes de trasladar materiales.</p></details>
+          <details class="faq-item"><summary>¿Cómo participo en una jornada de limpieza o reforestación?</summary><p>Busca actividades convocadas por una organización o autoridad reconocida. Confirma lugar, permisos, equipo de seguridad y especies apropiadas antes de participar.</p></details>
+        </div>
+      </div>
+    </section>
+    <section class="content-section suggest" id="sugerencias" aria-labelledby="suggest-title">
+      <div class="section-inner">
+        <div class="below-label">Ayúdanos a ampliar la red</div>
+        <h2 class="section-title" id="suggest-title">¿Conoces otra iniciativa local?</h2>
+        <p class="section-copy">Prepara una ficha para que el equipo la revise. La sugerencia no se publica ni se envía automáticamente y no solicita datos personales.</p>
+        <form class="suggest-form" id="suggest-form">
+          <label>Nombre de la organización o emprendimiento<input name="nombre" required autocomplete="off"></label>
+          <label>Tipo de iniciativa<select name="tipo" required><option value="">Selecciona una opción</option><option>Conservación o restauración</option><option>Rescate o educación ambiental</option><option>Artesanía o producto regional</option><option>Investigación</option><option>Otra iniciativa</option></select></label>
+          <label>Sitio web o enlace público<input type="url" name="enlace" placeholder="https://" required></label>
+          <label>Dato verificable que recomiendas revisar<input name="verificacion" required></label>
+          <label class="wide">¿Por qué sería útil para la red?<textarea name="motivo" required></textarea></label>
+          <button class="button" type="submit">Preparar ficha para revisión ↗</button>
+          <p class="form-note wide">Al continuar se descargará un archivo de sugerencia en tu dispositivo. Revísalo y compártelo con el equipo por el canal que acuerden.</p>
+          <p class="form-status wide" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    <section class="content-section references" id="referencias" aria-labelledby="references-title">
+      <div class="section-inner">
+        <div class="below-label">Información consultada</div>
+        <h2 class="section-title" id="references-title">Fuentes y referencias.</h2>
+        <p class="section-copy">Consulta estas fuentes oficiales y especializadas para ampliar la información. Las imágenes de especies enlazan a sus respectivas páginas de Wikimedia Commons, donde figuran autores y licencias.</p>
+        <ul class="reference-list">
+          <li><a href="https://www.gob.pe/institucion/sernanp/normas-legales/7288448-084-2025-sernanp" target="_blank" rel="noopener">SERNANP — Plan Maestro de la Reserva Nacional Tambopata 2025–2030</a>: planificación para la conservación del área.</li>
+          <li><a href="https://visitaareasnaturales.sernanp.gob.pe/anps/reserva-nacional-tambopata/" target="_blank" rel="noopener">SERNANP — Reserva Nacional Tambopata</a>: fauna, ubicación y visita al área natural protegida.</li>
+          <li><a href="https://www.gob.pe/institucion/sernanp/informes-publicaciones/1793047-reserva-nacional-tambopata" target="_blank" rel="noopener">SERNANP — Información de la Reserva Nacional Tambopata</a>: registros de jaguar y lobo de río.</li>
+          <li><a href="https://nc.iucnredlist.org/redlist/amazing-species/pteronura-brasiliensis/pdfs/original/pteronura-brasiliensis.pdf" target="_blank" rel="noopener">UICN — Evaluación de Pteronura brasiliensis</a>: amenazas para el lobo de río.</li>
+          <li><a href="https://repositorio.serfor.gob.pe/bitstream/SERFOR/573/1/SERFOR%202017%20Guia-de-identificacion2017.pdf" target="_blank" rel="noopener">SERFOR — Guía de identificación de aves</a>: ficha de guacamayos.</li>
+          <li><a href="https://repositorio.serfor.gob.pe/bitstream/SERFOR/980/3/SERFOR%202024%20-%20Guia%20de%20Identificacion%20de%20Especies.pdf" target="_blank" rel="noopener">SERFOR — Guía de identificación de especies (2024)</a>: distribución del mono choro en Madre de Dios.</li>
+          <li><a href="https://acca.org.pe/conservamos-con-ciencia-y-tecnologia/estaciones-biologicas/los-amigos/" target="_blank" rel="noopener">ACCA — Estación Biológica Los Amigos</a>: hábitats y especies observadas en la estación.</li>
+          <li><a href="https://repositorio.serfor.gob.pe/bitstream/SERFOR/994/1/SERFOR%202025%20Caracterizacion%20SAF%20MDD.pdf" target="_blank" rel="noopener">SERFOR — Caracterización de sistemas agroforestales en Madre de Dios (2025)</a>: castaña y contexto regional.</li>
+          <li><a href="https://www.scielo.br/j/aa/a/YtWgV9ppMZD3nttxzpS9D7k/?ilang=pt_BR&lang=en" target="_blank" rel="noopener">Estudio sobre polinización y dispersión de semillas de castaña</a>: interacciones ecológicas de Bertholletia excelsa.</li>
+          <li><a href="https://repositorio.serfor.gob.pe/bitstream/SERFOR/964/1/SERFOR%202023%20Investigacion%20del%20Shihuahuaco.pdf" target="_blank" rel="noopener">SERFOR — Avances en la investigación del shihuahuaco</a>: especies Dipteryx y estudios en Madre de Dios.</li>
+          <li><a href="https://acca.org.pe/los-amigos/" target="_blank" rel="noopener">Conservación Amazónica — Los Amigos</a>: concesión, estación e investigación.</li>
+          <li><a href="https://caminoverde.org/centers" target="_blank" rel="noopener">Camino Verde — Centros</a>: viveros y restauración en Madre de Dios.</li>
+          <li><a href="https://www.arbioperu.org/visita-arbio/" target="_blank" rel="noopener">ARBIO Perú — Visita ARBIO</a>: información del bosque y experiencias publicadas.</li>
+          <li><a href="https://amazonshelter.org/" target="_blank" rel="noopener">Amazon Shelter</a>: centro de rehabilitación y liberación de fauna silvestre.</li>
+          <li><a href="https://www.agrobosque.com.pe/" target="_blank" rel="noopener">Agrobosque</a> y <a href="https://cooptambopata.com/" target="_blank" rel="noopener">Cooperativa Tambopata Candamo</a>: información de productos regionales publicada por las organizaciones.</li>
+        </ul>
       </div>
     </section>
   </main>
@@ -188,6 +402,7 @@
       <div class="footer-ods">ODS 15 · Vida de ecosistemas terrestres</div>
     </div>
   </footer>
+  <a class="back-top" href="#inicio" aria-label="Volver al inicio" title="Volver al inicio">↑</a>
   <script>
     const menuButton = document.querySelector('.menu');
     const siteMenu = document.querySelector('#site-menu');
@@ -199,9 +414,60 @@
     siteMenu.addEventListener('click', (event) => {
       if (event.target.closest('a')) {
         siteMenu.classList.remove('open');
+        siteMenu.querySelectorAll('.nav-more[open]').forEach((item) => item.removeAttribute('open'));
         menuButton.setAttribute('aria-expanded', 'false');
         menuButton.setAttribute('aria-label', 'Abrir menú');
       }
+    });
+
+    const challengeKey = 'guardianes-mdd-reto-7-dias-v1';
+    const challengeChecks = [...document.querySelectorAll('#challenge-list input[type="checkbox"]')];
+    const progressText = document.querySelector('#progress-text');
+    const progressFill = document.querySelector('#progress-fill');
+    const progressTrack = document.querySelector('#progress-track');
+    const successMessage = document.querySelector('#success-message');
+
+    function readChallenge() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(challengeKey) || '[]');
+        return Array.isArray(saved) ? saved : [];
+      } catch { return []; }
+    }
+    function updateChallenge() {
+      const done = challengeChecks.filter((item) => item.checked).length;
+      const message = `${done} de 7 retos completados`;
+      progressText.textContent = message;
+      progressFill.style.width = `${(done / 7) * 100}%`;
+      progressTrack.setAttribute('aria-valuenow', String(done));
+      successMessage.textContent = done === 7 ? '¡Felicitaciones! Completaste los siete retos. Sigue cuidando la biodiversidad cada día.' : '';
+      try { localStorage.setItem(challengeKey, JSON.stringify(challengeChecks.map((item) => item.checked))); } catch {}
+    }
+    readChallenge().forEach((checked, index) => {
+      if (challengeChecks[index]) challengeChecks[index].checked = Boolean(checked);
+    });
+    challengeChecks.forEach((item) => item.addEventListener('change', updateChallenge));
+    document.querySelector('#reset-challenge').addEventListener('click', () => {
+      challengeChecks.forEach((item) => { item.checked = false; });
+      updateChallenge();
+      challengeChecks[0].focus();
+    });
+    updateChallenge();
+
+    document.querySelector('#suggest-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const proposal = Object.fromEntries(new FormData(form).entries());
+      proposal.fechaPreparacion = new Date().toISOString();
+      proposal.estado = 'Pendiente de verificación del equipo';
+      const blob = new Blob([JSON.stringify(proposal, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const download = document.createElement('a');
+      download.href = url;
+      download.download = 'sugerencia-guardianes-madre-de-dios.json';
+      download.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      document.querySelector('#form-status').textContent = 'Ficha descargada. La sugerencia no se publicó ni se envió; compártela con el equipo para que la verifique.';
+      form.reset();
     });
   </script>
 </body>
