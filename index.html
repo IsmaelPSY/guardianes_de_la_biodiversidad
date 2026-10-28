@@ -110,6 +110,21 @@
     .directory-note { margin-top:22px; color:#657269; font-size:12px; line-height:1.6; }
     .ventures { background:#fffdf6; }
     .impact { background:#f3e8c6; }
+    .news { background:#fffdf6; }
+    .news-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:30px; }
+    .news-card { overflow:hidden; border:1px solid #e4e8dc; border-radius:14px; background:#fff; }
+    .news-card img { display:block; width:100%; height:210px; object-fit:cover; background:#eaf0df; }
+    .news-body { padding:18px; }
+    .news-body h3 { margin:0 0 8px; color:#285941; font-family:Georgia,serif; font-size:20px; }
+    .news-body p { margin:8px 0 0; color:#53665a; font-size:13px; line-height:1.65; }
+    .news-source { color:#758373!important; font-size:11px!important; }
+    @media(max-width:760px) { .news-grid { grid-template-columns:1fr 1fr; } }
+    @media(max-width:430px) { .news-grid { grid-template-columns:1fr; } .news-card img { height:auto; max-height:330px; object-fit:contain; } }
+    .impact-photos { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:16px; }
+    .impact-photos figure { margin:0; overflow:hidden; border-radius:10px; background:#eaf0df; }
+    .impact-photos img { display:block; width:100%; height:180px; object-fit:cover; }
+    .impact-photos figcaption { padding:8px 10px; color:#53665a; font-size:11px; line-height:1.4; }
+    @media(max-width:430px) { .impact-photos { grid-template-columns:1fr; } .impact-photos img { height:210px; } }
     .status-chip { display:inline-flex; margin:0 0 14px; padding:6px 10px; border-radius:99px; background:#eaf0df; color:#285941; font-size:10px; font-weight:750; letter-spacing:.1em; text-transform:uppercase; }
     .suggest { background:#fffdf6; }
     .suggest-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:25px; }
@@ -118,6 +133,7 @@
     .suggest-form textarea { min-height:88px; resize:vertical; }
     .suggest-form .wide { grid-column:1/-1; }
     .suggest-form button { justify-self:start; border:0; cursor:pointer; }
+    .suggest-form .fallback-button { justify-self:start; padding:0; border:0; background:transparent; color:#285941; text-decoration:underline; }
     .form-note,.form-status { color:#657269; font-size:12px; line-height:1.6; }
     .form-status { min-height:20px; margin:0; }
     .faq { background:#eaf0df; }
@@ -176,7 +192,7 @@
       <div class="links" id="site-menu">
         <a href="#inicio">Inicio</a><a href="#dedicatoria">Dedicatoria</a><a href="#proposito">Propósito</a><a href="#problema">Problema</a><a href="#consecuencias">Consecuencias</a>
         <details class="nav-more"><summary>Explora ↓</summary><div class="nav-more-menu">
-          <a href="#galeria">Galería</a><a href="#biodiversidad">Conoce la biodiversidad</a><a href="#guardianes">¡Yo también soy guardián!</a><a href="#reto">Reto de 7 días</a><a href="#red">Red de guardianes</a><a href="#emprendimientos">Emprendimientos amazónicos</a><a href="#impacto">Nuestro impacto</a><a href="#conocenos">Conócenos</a><a href="#preguntas">Preguntas frecuentes</a><a href="#referencias">Fuentes y referencias</a><a href="#sugerencias">Sugerir una iniciativa</a>
+          <a href="#galeria">Galería</a><a href="#noticias">Noticias</a><a href="comunidad.html">Comunidad</a><a href="#biodiversidad">Conoce la biodiversidad</a><a href="#guardianes">¡Yo también soy guardián!</a><a href="#reto">Reto de 7 días</a><a href="#red">Red de guardianes</a><a href="#emprendimientos">Emprendimientos amazónicos</a><a href="#impacto">Nuestro impacto</a><a href="#conocenos">Conócenos</a><a href="#preguntas">Preguntas frecuentes</a><a href="#referencias">Fuentes y referencias</a><a href="#sugerencias">Sugerir una iniciativa</a>
         </div></details>
       </div>
       <button class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">☰</button>
@@ -234,7 +250,10 @@
           <figure><img src="bosque-amazonico.jpeg" alt="Bosque amazónico de Madre de Dios bajo un cielo abierto" loading="lazy"><figcaption>Bosque amazónico</figcaption></figure>
           <figure><img src="mineria-rio.jpeg" alt="Maquinaria de extracción en un río" loading="lazy"><figcaption>Actividad minera en el río</figcaption></figure>
           <figure><img src="impacto-mineria.jpeg" alt="Zona de extracción minera y suelos removidos" loading="lazy"><figcaption>Impacto de la minería</figcaption></figure>
+          <figure><img src="mineria-ilegal-bosque.jpeg" alt="Área de bosque removida y alterada por minería ilegal" loading="lazy"><figcaption>Minería ilegal en zona boscosa</figcaption></figure>
+          <figure><img src="mineria-ilegal-rio.jpeg" alt="Curso de agua y terreno degradados por actividad minera ilegal" loading="lazy"><figcaption>Minería ilegal y contaminación del agua</figcaption></figure>
           <figure><img src="deforestacion.jpeg" alt="Árbol talado y vegetación removida en el bosque" loading="lazy"><figcaption>Pérdida de cobertura forestal</figcaption></figure>
+          <figure><img src="tala-ilegal.jpeg" alt="Área de bosque con árboles talados y suelo removido" loading="lazy"><figcaption>Tala ilegal y pérdida de bosque</figcaption></figure>
           <figure><img src="mono-aullador.jpeg" alt="Mono aullador entre ramas del bosque" loading="lazy"><figcaption>Mono aullador en el bosque amazónico</figcaption></figure>
           <figure><img src="rio-tambopata.jpeg" alt="Embarcación en un río amazónico al amanecer" loading="lazy"><figcaption>Un río que conecta la vida</figcaption></figure>
           <figure><img src="atardecer-amazonia.jpeg" alt="Palmeras amazónicas reflejadas al atardecer" loading="lazy"><figcaption>Atardecer en la Amazonía</figcaption></figure>
@@ -242,7 +261,21 @@
         </div>
       </div>
     </section>
-    <section class="content-section team" id="conocenos" aria-labelledby="team-title">
+    <section class="content-section news" id="noticias" aria-labelledby="news-title">
+      <div class="section-inner">
+        <div class="below-label">Lo que ocurre también nos conecta</div>
+        <h2 class="section-title" id="news-title">Noticias.</h2>
+        <p class="section-copy">Las noticias ambientales muestran cómo los incendios, las lluvias intensas, la contaminación y el tráfico de fauna afectan a las personas y a la naturaleza. Infórmate, contrasta la fecha y la fuente, y comparte información responsable.</p>
+        <div class="news-grid">
+          <article class="news-card"><img src="noticias/derrame-combustible.jpeg" alt="Captura de una noticia sobre una explosión de cisterna con diésel y preocupación por contaminación en el puente El Castañal" loading="lazy"><div class="news-body"><h3>Combustible y riesgo de contaminación</h3><p>La captura reporta una explosión de cisterna y un derrame de combustible en el puente El Castañal. Los derrames pueden contaminar agua y suelos; sigue los avisos de las autoridades y evita acercarte a la zona.</p><p class="news-source">Imagen de una noticia de Exitosa compartida para informar. Verifica fecha y detalles en la fuente original.</p></div></article>
+          <article class="news-card"><img src="noticias/lluvias-inundacion.jpeg" alt="Captura de TV Perú Noticias sobre lluvias torrenciales e inundaciones en Madre de Dios" loading="lazy"><div class="news-body"><h3>Lluvias e inundaciones</h3><p>La imagen informa sobre lluvias torrenciales en Madre de Dios. Las inundaciones ponen en riesgo a familias, animales y ecosistemas. Mantente atento a alertas oficiales y no cruces corrientes de agua.</p><p class="news-source">Captura atribuida a TV Perú Noticias. Consulta los reportes oficiales para información actualizada.</p></div></article>
+          <article class="news-card"><img src="noticias/incendios-forestales.jpeg" alt="Captura de una noticia sobre incendios forestales y humo que afecta a Madre de Dios" loading="lazy"><div class="news-body"><h3>Incendios forestales y humo</h3><p>La captura señala que incendios en Brasil y Bolivia habrían generado humo en Madre de Dios y menciona áreas quemadas. El fuego destruye hábitats y el humo afecta la salud; no quemes residuos ni inicies fogatas cerca de vegetación.</p><p class="news-source">Captura atribuida a Exitosa. La cifra y el alcance deben confirmarse con reportes oficiales.</p></div></article>
+          <article class="news-card"><img src="noticias/rescate-fauna-1.jpeg" alt="Captura de noticia sobre el rescate de animales silvestres en Puerto Maldonado" loading="lazy"><div class="news-body"><h3>Fauna silvestre rescatada</h3><p>La captura reporta el rescate de animales silvestres que deambulaban por Puerto Maldonado. La fauna no es mascota: no la captures ni la compres. Si encuentras un animal silvestre, mantén distancia y avisa a las autoridades.</p><p class="news-source">Captura de una nota que atribuye el operativo a la Policía Nacional del Perú. Verifica el reporte original.</p></div></article>
+          <article class="news-card"><img src="noticias/rescate-fauna-2.jpeg" alt="Captura de una noticia sobre animales silvestres rescatados y liberados en Tambopata" loading="lazy"><div class="news-body"><h3>Rescate y retorno a su hábitat</h3><p>La imagen menciona animales rescatados y liberados en el sector La Torre, cerca de la Reserva Nacional Tambopata. Proteger la fauna también significa no alimentar ni manipular animales silvestres y denunciar su comercio ilegal.</p><p class="news-source">Captura atribuida a El Comercio. Confirma los detalles en la publicación original.</p></div></article>
+          <article class="news-card"><img src="noticias/felino-refugio-lluvias.jpeg" alt="Felino silvestre refugiado dentro de una vivienda durante una lluvia intensa, según la captura" loading="lazy"><div class="news-body"><h3>Cuando la fauna busca refugio</h3><p>La captura describe a un felino silvestre que habría ingresado a una vivienda durante una lluvia intensa y menciona la intervención de personal de fauna. No intentes acorralarlo: busca un lugar seguro y comunícate con especialistas.</p><p class="news-source">Contexto tomado de la captura compartida; confirma el caso con la autoridad competente.</p></div></article>
+        </div>
+      </div>
+    </section>    <section class="content-section team" id="conocenos" aria-labelledby="team-title">
       <div class="section-inner team-layout">
         <img class="team-photo" src="equipo-guardianes.jpeg" alt="Integrantes del equipo Guardianes de la Biodiversidad trabajando juntos" loading="lazy">
         <div>
@@ -334,10 +367,10 @@
       <div class="section-inner">
         <div class="below-label">Transparencia y aprendizaje</div>
         <h2 class="section-title" id="impact-title">Nuestro impacto.</h2>
-        <p class="section-copy">Aún no registramos resultados verificados de actividades del proyecto. Por ahora, presentamos un plan pendiente de ejecución; añadiremos cifras y fotografías autorizadas cuando existan registros confirmados.</p>
+        <p class="section-copy">Compartimos evidencias de las acciones comunitarias realizadas. Esta jornada de limpieza en el Parque Nuestra Esperanza queda documentada con fotografías; no se publican cifras de residuos ni de participantes que no hayan sido verificadas.</p>
         <div class="impact-grid">
           <article class="impact-card"><span class="status-chip">Meta pendiente</span><h3>Educación ambiental</h3><p>Organizar una actividad educativa sobre biodiversidad local y documentar fecha, contenido, número de participantes y aprendizajes.</p></article>
-          <article class="impact-card"><span class="status-chip">Meta pendiente</span><h3>Acción comunitaria segura</h3><p>Coordinar una jornada de limpieza o restauración con orientación técnica, permisos y medidas de seguridad; registrar resultados sin estimaciones.</p></article>
+          <article class="impact-card"><span class="status-chip">Jornada realizada</span><h3>Acción comunitaria segura</h3><p>Jornada de limpieza en el Parque Nuestra Esperanza.</p><div class="impact-photos"><figure><img src="fotos-limpieza/jornada-grupal.jpeg" alt="Grupo de voluntarios al finalizar la jornada de limpieza en el parque" loading="lazy"><figcaption>Equipo voluntario en el parque</figcaption></figure><figure><img src="fotos-limpieza/recoleccion-residuos.jpeg" alt="Voluntarios recolectan residuos en una bolsa durante la limpieza" loading="lazy"><figcaption>Recolección de residuos</figcaption></figure><figure><img src="fotos-limpieza/barrido-parque.jpeg" alt="Voluntario barre un sendero del parque" loading="lazy"><figcaption>Limpieza de senderos</figcaption></figure><figure><img src="fotos-limpieza/limpieza-zona-techada.jpeg" alt="Voluntarias limpian el área techada del parque" loading="lazy"><figcaption>Limpieza del área techada</figcaption></figure><figure><img src="fotos-limpieza/equipo-ucv-parque.jpeg" alt="Integrantes del equipo UCV en el Parque Nuestra Esperanza" loading="lazy"><figcaption>Equipo UCV en el Parque Nuestra Esperanza</figcaption></figure></div></article>
           <article class="impact-card"><span class="status-chip">Meta pendiente</span><h3>Seguimiento y evidencias</h3><p>Guardar fotografías autorizadas, lista de actividades realizadas, participantes contabilizados y aprendizajes para actualizar esta sección con transparencia.</p></article>
         </div>
       </div>
@@ -357,16 +390,17 @@
     <section class="content-section suggest" id="sugerencias" aria-labelledby="suggest-title">
       <div class="section-inner">
         <div class="below-label">Ayúdanos a ampliar la red</div>
-        <h2 class="section-title" id="suggest-title">¿Conoces otra iniciativa local?</h2>
-        <p class="section-copy">Prepara una ficha para que el equipo la revise. La sugerencia no se publica ni se envía automáticamente y no solicita datos personales.</p>
+        <h2 class="section-title" id="suggest-title">¿Tienes alguna iniciativa o recomendación?</h2>
+        <p class="section-copy">Comparte un emprendimiento, una acción que recomiendas o una noticia ambiental. El enlace es opcional. Al continuar se abrirá tu aplicación de correo con la sugerencia preparada para que la revises y la envíes.</p>
         <form class="suggest-form" id="suggest-form">
-          <label>Nombre de la organización o emprendimiento<input name="nombre" required autocomplete="off"></label>
-          <label>Tipo de iniciativa<select name="tipo" required><option value="">Selecciona una opción</option><option>Conservación o restauración</option><option>Rescate o educación ambiental</option><option>Artesanía o producto regional</option><option>Investigación</option><option>Otra iniciativa</option></select></label>
-          <label>Sitio web o enlace público<input type="url" name="enlace" placeholder="https://" required></label>
-          <label>Dato verificable que recomiendas revisar<input name="verificacion" required></label>
+          <label>Nombre o título de la iniciativa, acción o noticia<input name="nombre" required autocomplete="off"></label>
+          <label>Tipo de iniciativa<select name="tipo" required><option value="">Selecciona una opción</option><option>Conservación o restauración</option><option>Rescate o educación ambiental</option><option>Artesanía o producto regional</option><option>Investigación</option><option>Acción o actividad recomendada</option><option>Noticia o información ambiental</option><option>Otra iniciativa</option></select></label>
+          <label>Sitio web o enlace público (opcional)<input type="url" name="enlace" placeholder="https://"></label>
+          <label>Fuente o dato verificable que recomiendas revisar (opcional)<input name="verificacion"></label>
           <label class="wide">¿Por qué sería útil para la red?<textarea name="motivo" required></textarea></label>
-          <button class="button" type="submit">Preparar ficha para revisión ↗</button>
-          <p class="form-note wide">Al continuar se descargará un archivo de sugerencia en tu dispositivo. Revísalo y compártelo con el equipo por el canal que acuerden.</p>
+          <button class="button" type="submit">Enviar sugerencia por correo ↗</button>
+          <button class="fallback-button wide" id="download-suggestion" type="button">Si no se abre el correo, descargar ficha</button>
+          <p class="form-note wide">El correo no se envía automáticamente: revisa el borrador y pulsa Enviar en tu aplicación de correo. Si no se abre, descarga la ficha con el enlace de arriba.</p>
           <p class="form-status wide" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -453,12 +487,16 @@
     });
     updateChallenge();
 
-    document.querySelector('#suggest-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      const proposal = Object.fromEntries(new FormData(form).entries());
-      proposal.fechaPreparacion = new Date().toISOString();
+    const suggestionForm = document.querySelector('#suggest-form');
+    function getSuggestion() {
+      const proposal = Object.fromEntries(new FormData(suggestionForm).entries());
+      proposal.fechaPreparacion = new Date().toLocaleString('es-PE');
       proposal.estado = 'Pendiente de verificación del equipo';
+      return proposal;
+    }
+    function downloadSuggestion() {
+      if (!suggestionForm.reportValidity()) return;
+      const proposal = getSuggestion();
       const blob = new Blob([JSON.stringify(proposal, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const download = document.createElement('a');
@@ -466,8 +504,28 @@
       download.download = 'sugerencia-guardianes-madre-de-dios.json';
       download.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      document.querySelector('#form-status').textContent = 'Ficha descargada. La sugerencia no se publicó ni se envió; compártela con el equipo para que la verifique.';
-      form.reset();
+      document.querySelector('#form-status').textContent = 'Ficha descargada. Puedes adjuntarla a un correo para el equipo.';
+    }
+    document.querySelector('#download-suggestion').addEventListener('click', downloadSuggestion);
+    suggestionForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!suggestionForm.reportValidity()) return;
+      const proposal = getSuggestion();
+      const subject = `Sugerencia para Guardianes de la Biodiversidad: ${proposal.nombre}`;
+      const body = [
+        'Nueva sugerencia para revisar:',
+        '',
+        `Organización o emprendimiento: ${proposal.nombre}`,
+        `Tipo de iniciativa: ${proposal.tipo}`,
+        `Enlace público: ${proposal.enlace || 'No se incluyó enlace'}`,
+        `Dato verificable: ${proposal.verificacion}`,
+        `¿Por qué sería útil para la red?: ${proposal.motivo}`,
+        '',
+        `Fecha de preparación: ${proposal.fechaPreparacion}`,
+        `Estado: ${proposal.estado}`
+      ].join('\n');
+      window.location.href = `mailto:noeliasanyu1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      document.querySelector('#form-status').textContent = 'Se preparó el correo. Revisa el borrador que se abrió y pulsa Enviar; si no se abrió, usa “descargar ficha”.';
     });
   </script>
 </body>
