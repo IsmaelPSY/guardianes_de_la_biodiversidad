@@ -46,6 +46,9 @@
     .support-button:disabled { cursor:not-allowed; opacity:.72; }
     .support-count { color:#f4f0df; font-size:11px; }
     .support-status { color:#e6edaa; font-size:11px; }
+    .support-butterfly { position:fixed; z-index:20; pointer-events:none; font-size:25px; animation:butterfly-celebrate 1.5s ease-out forwards; filter:drop-shadow(0 2px 5px #173b3166); }
+    @keyframes butterfly-celebrate { 0% { opacity:0; transform:translate(0,0) scale(.45) rotate(-15deg); } 12% { opacity:1; } 100% { opacity:0; transform:translate(var(--fly-x),var(--fly-y)) scale(1.15) rotate(var(--fly-rotate)); } }
+    @media (prefers-reduced-motion:reduce) { .support-butterfly { animation-duration:.01ms; } }
     .button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:49px; padding:0 21px; border-radius:999px; background:var(--lime); color:#173b31; font-size:13px; font-weight:750; transition:transform .2s,background .2s; }
     .button:hover { transform:translateY(-2px); background:#e7f5ad; }
     .text-link { font-size:13px; font-weight:650; }.text-link span { margin-left:7px; }
@@ -213,7 +216,7 @@
           <a class="button" href="#galeria">Descubre por qué importa <span>↗</span></a>
           <div class="support-action">
             <button class="button support-button" id="support-button" type="button" disabled><span aria-hidden="true">♥</span> Apoyo esta iniciativa</button>
-            <span class="support-count" id="support-count" aria-live="polite">El contador se activará al configurar las métricas.</span>
+            <span class="support-count" id="support-count" aria-live="polite">Cargando apoyos…</span>
             <span class="support-status" id="support-status" role="status" aria-live="polite"></span>
           </div>
         </div>
@@ -449,39 +452,78 @@
     </div>
   </footer>
   <a class="back-top" href="#inicio" aria-label="Volver al inicio" title="Volver al inicio">↑</a>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="goatcounter-config.js"></script>
   <script src="goatcounter.js"></script>
   <script>
     const supportButton = document.querySelector('#support-button');
     const supportCount = document.querySelector('#support-count');
     const supportStatus = document.querySelector('#support-status');
-    let supportTotal = null;
-    const supportEventPath = 'apoyo-iniciativa';
+    let supportDb = null;
+    let supportVisitorId = null;
     function displaySupportTotal(value) {
-      supportTotal = value;
-      supportCount.textContent = `${value.toLocaleString('es-PE')} clics de apoyo registrados`;
+      supportCount.textContent = `${value.toLocaleString('es-PE')} personas apoyan esta iniciativa`;
+    }
+    function celebrateSupport() {
+      const rect = supportButton.getBoundingClientRect();
+      const symbols = ['🦋','🦋','🦋','🦋','🦋','🦋','🦋'];
+      symbols.forEach((symbol, index) => {
+        const butterfly = document.createElement('span');
+        butterfly.className = 'support-butterfly';
+        butterfly.setAttribute('aria-hidden', 'true');
+        butterfly.textContent = symbol;
+        butterfly.style.left = `${rect.left + rect.width / 2}px`;
+        butterfly.style.top = `${rect.top + rect.height / 2}px`;
+        butterfly.style.setProperty('--fly-x', `${Math.cos(index * Math.PI * 2 / symbols.length) * (55 + Math.random() * 65)}px`);
+        butterfly.style.setProperty('--fly-y', `${-35 + Math.sin(index * Math.PI * 2 / symbols.length) * (45 + Math.random() * 55)}px`);
+        butterfly.style.setProperty('--fly-rotate', `${Math.round(Math.random() * 100 - 50)}deg`);
+        document.body.append(butterfly);
+        butterfly.addEventListener('animationend', () => butterfly.remove(), { once:true });
+      });
     }
     async function refreshSupportTotal() {
-      if (!window.guardianesAnalytics) return;
+      if (!supportDb) return;
       try {
-        const value = await window.guardianesAnalytics.getEventCount(supportEventPath);
-        displaySupportTotal(value);
-        return true;
+        supportVisitorId = localStorage.getItem('guardianes-support-visitor-id');
+        if (!supportVisitorId) {
+          supportVisitorId = crypto.randomUUID();
+          localStorage.setItem('guardianes-support-visitor-id', supportVisitorId);
+        }
+        const { data: supportData, error: totalError } = await supportDb.rpc('get_initiative_support_status', { p_visitor_id: supportVisitorId });
+        if (totalError) throw totalError;
+        displaySupportTotal(Number(supportData.total));
+        supportButton.disabled = supportData.supported;
+        supportStatus.textContent = supportData.supported ? 'Este navegador ya registró su apoyo. ¡Gracias!' : '';
       } catch {
-        supportCount.textContent = 'No se pudo cargar el contador. Intenta más tarde.';
-        return false;
+        supportCount.textContent = 'No se pudo cargar el contador de apoyos.';
+        supportStatus.textContent = 'Verifica la configuración de apoyos en Supabase.';
+        supportButton.disabled = true;
       }
     }
-    document.addEventListener('goatcounter:ready', async () => {
-      supportButton.disabled = !(await refreshSupportTotal());
-    });
-    supportButton.addEventListener('click', () => {
-      if (!window.goatcounter || supportTotal === null) return;
+    const supportConfig = window.GUARDIANES_SUPABASE;
+    if (supportConfig?.url && supportConfig?.publishableKey && window.supabase) {
+      supportDb = window.supabase.createClient(supportConfig.url, supportConfig.publishableKey);
+      refreshSupportTotal();
+    } else {
+      supportCount.textContent = 'El contador de apoyos aún no está configurado.';
+      supportStatus.textContent = 'El botón se habilitará al configurar Supabase.';
+    }
+    supportButton.addEventListener('click', async () => {
+      if (!supportDb || !supportVisitorId) return;
       supportButton.disabled = true;
-      displaySupportTotal(supportTotal + 1);
-      supportStatus.textContent = '¡Gracias por apoyar la iniciativa!';
-      window.goatcounter.count({ path: supportEventPath, title: 'Apoyo esta iniciativa', event: true, no_session: true });
-      window.setTimeout(() => { supportButton.disabled = false; }, 900);
+      supportStatus.textContent = 'Registrando tu apoyo…';
+      const { data, error } = await supportDb.rpc('support_initiative', { p_visitor_id: supportVisitorId });
+      if (error) {
+        supportStatus.textContent = 'No se pudo registrar tu apoyo. Intenta nuevamente.';
+        supportButton.disabled = false;
+        return;
+      }
+      const result = typeof data === 'string' ? JSON.parse(data) : data;
+      displaySupportTotal(Number(result.total));
+      supportStatus.textContent = result.inserted ? '¡Gracias por apoyar la iniciativa!' : 'Este navegador ya registró su apoyo. ¡Gracias!';
+      supportButton.disabled = true;
+      if (result.inserted) celebrateSupport();
     });
 
     const menuButton = document.querySelector('.menu');

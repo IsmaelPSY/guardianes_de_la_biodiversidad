@@ -1,6 +1,6 @@
 # Configurar GoatCounter
 
-GoatCounter agrega métricas de visitas al sitio y registra cada pulsación de **«Apoyo esta iniciativa»** como un evento. El evento también alimenta el contador público de clics; no se requiere una base de datos propia.
+GoatCounter agrega métricas de visitas al sitio. El contador de **«Apoyo esta iniciativa»** se guarda de forma permanente en Supabase y limita cada cuenta autenticada a un apoyo.
 
 ## Activación
 
@@ -13,11 +13,12 @@ GoatCounter agrega métricas de visitas al sitio y registra cada pulsación de *
    ```
 
 4. Publica `goatcounter-config.js`, `goatcounter.js`, `index.html` y `comunidad.html` junto con el resto del sitio.
-5. Visita la web y comprueba las visitas y el evento `apoyo-iniciativa` en el panel de GoatCounter.
-6. En los ajustes del sitio de GoatCounter, activa **Allow adding visitor counts on your website** para que la página pueda leer y mostrar el total del evento.
+5. Visita la web y comprueba las visitas en el panel de GoatCounter.
 
 El código público del sitio no es una API key. No coloques una API key privada en los archivos públicos.
 
-## Sobre el contador de apoyo
+## Contador de apoyo en Supabase
 
-El número muestra clics registrados, no personas verificadas. Una persona puede pulsar más de una vez y el botón no valida la identidad. La página suma el clic al instante en el navegador de quien lo pulsa; GoatCounter guarda el evento para que se acumule el total global. El contador público de GoatCounter puede tardar hasta cuatro horas en reflejar nuevos eventos. Si se necesita que todos vean un total compartido inmediatamente, hará falta guardar el número en un servicio con escritura/lectura en tiempo real, como Supabase.
+Ejecuta el archivo `supabase-support.sql` completo en Supabase > SQL Editor. La web mostrará el total acumulado y permitirá apoyar sin iniciar sesión. El navegador conserva un identificador aleatorio en almacenamiento local y la clave primaria de la tabla impide que ese mismo identificador sume más de un apoyo, incluso si vuelve a pulsar.
+
+El límite es por navegador, no por persona: borrar los datos del sitio, cambiar de navegador o usar otro dispositivo permite generar otro identificador. La IP no se utiliza porque puede ser compartida o cambiar y es un dato personal. Evita poner la clave `service_role` en la web; el sitio utiliza solamente la clave publishable.
