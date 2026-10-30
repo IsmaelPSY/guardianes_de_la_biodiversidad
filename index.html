@@ -41,6 +41,11 @@
     h1 em { color:#e6edaa; font-weight:400; }
     .intro { max-width:490px; margin:25px 0 30px; color:#f4f0df; font-size:16px; line-height:1.7; }
     .actions { display:flex; flex-wrap:wrap; align-items:center; gap:22px; }
+    .support-action { display:grid; justify-items:start; gap:8px; }
+    .support-button { border:1px solid #fff9; font:inherit; cursor:pointer; }
+    .support-button:disabled { cursor:not-allowed; opacity:.72; }
+    .support-count { color:#f4f0df; font-size:11px; }
+    .support-status { color:#e6edaa; font-size:11px; }
     .button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:49px; padding:0 21px; border-radius:999px; background:var(--lime); color:#173b31; font-size:13px; font-weight:750; transition:transform .2s,background .2s; }
     .button:hover { transform:translateY(-2px); background:#e7f5ad; }
     .text-link { font-size:13px; font-weight:650; }.text-link span { margin-left:7px; }
@@ -204,7 +209,14 @@
         <div class="eyebrow">Cuidar la vida que nos rodea</div>
         <h1 id="hero-title">La vida de<br>nuestro bosque<br><em>nos necesita.</em></h1>
         <p class="intro">Somos jóvenes de Madre de Dios unidos para alzar la voz por nuestra biodiversidad y proteger el hogar que compartimos.</p>
-        <div class="actions"><a class="button" href="#galeria">Descubre por qué importa <span>↗</span></a></div>
+        <div class="actions">
+          <a class="button" href="#galeria">Descubre por qué importa <span>↗</span></a>
+          <div class="support-action">
+            <button class="button support-button" id="support-button" type="button" disabled><span aria-hidden="true">♥</span> Apoyo esta iniciativa</button>
+            <span class="support-count" id="support-count" aria-live="polite">El contador se activará al configurar las métricas.</span>
+            <span class="support-status" id="support-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
       </div>
       <div class="hero-bottom"><span class="location">Madre de Dios · Amazonía peruana</span><span class="ods"><strong>15</strong> Vida de ecosistemas terrestres</span></div>
     </section>
@@ -437,7 +449,41 @@
     </div>
   </footer>
   <a class="back-top" href="#inicio" aria-label="Volver al inicio" title="Volver al inicio">↑</a>
+  <script src="goatcounter-config.js"></script>
+  <script src="goatcounter.js"></script>
   <script>
+    const supportButton = document.querySelector('#support-button');
+    const supportCount = document.querySelector('#support-count');
+    const supportStatus = document.querySelector('#support-status');
+    let supportTotal = null;
+    const supportEventPath = 'apoyo-iniciativa';
+    function displaySupportTotal(value) {
+      supportTotal = value;
+      supportCount.textContent = `${value.toLocaleString('es-PE')} clics de apoyo registrados`;
+    }
+    async function refreshSupportTotal() {
+      if (!window.guardianesAnalytics) return;
+      try {
+        const value = await window.guardianesAnalytics.getEventCount(supportEventPath);
+        displaySupportTotal(value);
+        return true;
+      } catch {
+        supportCount.textContent = 'No se pudo cargar el contador. Intenta más tarde.';
+        return false;
+      }
+    }
+    document.addEventListener('goatcounter:ready', async () => {
+      supportButton.disabled = !(await refreshSupportTotal());
+    });
+    supportButton.addEventListener('click', () => {
+      if (!window.goatcounter || supportTotal === null) return;
+      supportButton.disabled = true;
+      displaySupportTotal(supportTotal + 1);
+      supportStatus.textContent = '¡Gracias por apoyar la iniciativa!';
+      window.goatcounter.count({ path: supportEventPath, title: 'Apoyo esta iniciativa', event: true, no_session: true });
+      window.setTimeout(() => { supportButton.disabled = false; }, 900);
+    });
+
     const menuButton = document.querySelector('.menu');
     const siteMenu = document.querySelector('#site-menu');
     menuButton.addEventListener('click', () => {
