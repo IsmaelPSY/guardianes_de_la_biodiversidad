@@ -65,7 +65,7 @@ begin
 
   insert into public.initiative_supports (visitor_id)
   values (p_visitor_id)
-  on conflict (user_id) do nothing;
+  on conflict (visitor_id) do nothing;
   v_inserted := found;
 
   select count(*) into v_total from public.initiative_supports;
